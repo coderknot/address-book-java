@@ -13,8 +13,10 @@ public class ContactTest {
   @After
   public void tearDown() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM contacts *;";
-      con.createQuery(sql).executeUpdate();
+      String deleteContacts = "DELETE FROM contacts *;";
+      String deleteEntries = "DELETE FROM entries *;";
+      con.createQuery(deleteContacts).executeUpdate();
+      con.createQuery(deleteEntries).executeUpdate();
     }
   }
 
